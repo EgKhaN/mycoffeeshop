@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute , Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Coffee } from '../logic/coffee';
 import { GeolocationService } from '../geolocation.service';
 import { TastingRating } from '../logic/TastingRating';
@@ -14,6 +14,8 @@ import { DataService } from '../data.service';
 export class CoffeeComponent implements OnInit {
 
   coffee: Coffee;
+  tastingEnabled: boolean = false;
+
   types = ['Eskpresso', 'Americano', 'Ristretto'];
   routingSubscription: any;
 
@@ -26,7 +28,14 @@ export class CoffeeComponent implements OnInit {
     this.coffee = new Coffee();
 
     this.routingSubscription = this.route.params.subscribe(params => {
-      console.log(params.id);
+      if (params.id) {
+        this.dataService.get(params.id, response => {
+          this.coffee = response;
+          if (this.coffee.tastingRating) {
+            this.tastingEnabled = true;
+          }
+        });
+      }
     });
 
     this.geolocation.requestLocation((location: { latitude: number; longitude: number; }) => {

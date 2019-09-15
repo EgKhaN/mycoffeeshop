@@ -3,6 +3,7 @@ import { PlaceLocation } from './PlaceLocation';
 
 export class Coffee {
     // prop
+    _id: string;
     type: string;
     rating: number;
     notes: string;

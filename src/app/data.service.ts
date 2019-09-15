@@ -11,18 +11,15 @@ export class DataService {
   constructor(private http: HttpClient) { }
   public endpoint = 'http://localhost:3000';
 
-  getList(callback) {
-
-
-    this.http.get(`${this.endpoint}/coffees`).subscribe(response => {
-      console.log(response);
+  get(coffeeId: string, callback) {
+    this.http.get(`${this.endpoint}/coffees/${coffeeId}`).subscribe(response => {
       callback(response);
     });
-    // const list = [
-    //   new Coffee('Double Expresso', 'Sunny Cafe', new PlaceLocation('123 Market St', 'San Francisco')),
-    //   new Coffee('Caramel Americano', 'Starcoffee', new PlaceLocation('Gran Via 34', 'Madrid'))
-    // ];
-    // callback(list);
+  }
+  getList(callback) {
+    this.http.get(`${this.endpoint}/coffees`).subscribe(response => {
+      callback(response);
+    });
   }
 
   save(coffee: any, callback: (arg0: boolean) => void) {
@@ -37,6 +34,5 @@ export class DataService {
         callback(true);
       });
     }
-    // callback(true);
   }
 }
