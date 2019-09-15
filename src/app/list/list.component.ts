@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Coffee } from '../logic/coffee';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  list: Coffee[];
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getList((list: Coffee[]) => {
+      this.list = list;
+    });
   }
 
 }

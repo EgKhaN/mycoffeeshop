@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Coffee } from './logic/coffee';
+import { PlaceLocation } from './logic/PlaceLocation';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ export class DataService {
 
   constructor() { }
 
-  getList(callback: (arg0: Coffee[]) => void) {
+  getList(callback) {
     // TODO: Change it with real webservice
 
     const list = [

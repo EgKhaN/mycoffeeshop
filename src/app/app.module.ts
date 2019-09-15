@@ -7,13 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
-       MatToolbarModule, MatCardModule, MatSlideToggleModule } from '@angular/material';
+import { MatButtonModule, MatIconModule , MatSelectModule, MatSliderModule,
+       MatToolbarModule , MatInputModule, MatCardModule, MatSlideToggleModule } from '@angular/material';
 import 'hammerjs';
 import { ListComponent } from './list/list.component';
 import { CoffeeComponent } from './coffee/coffee.component';
 
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: ListComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(routes),
+    FormsModule,
     BrowserModule, BrowserAnimationsModule,
     AppRoutingModule,
     MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,

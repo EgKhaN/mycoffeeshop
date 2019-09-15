@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PlaceLocation } from './logic/PlaceLocation';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class GeolocationService {
     // <a href="https://maps.apple.com/?q=Eiffel+Tower"> apple map
     let query = '';
     if (location.latitude) {
-      query = location.latitude + ',' + location.longtitude;
+      query = location.latitude + ',' + location.longitude;
     } else {
       query = `${location.address}, ${location.city}`;
     }
