@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router } from '@angular/router';
 import { Coffee } from '../logic/coffee';
 import { GeolocationService } from '../geolocation.service';
 import { TastingRating } from '../logic/TastingRating';
+import { Route } from '@angular/compiler/src/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-coffee',
@@ -16,7 +18,9 @@ export class CoffeeComponent implements OnInit {
   routingSubscription: any;
 
   constructor(private route: ActivatedRoute,
-              private geolocation: GeolocationService) { }
+              private geolocation: GeolocationService,
+              private router: Router,
+              private dataService: DataService) { }
 
   ngOnInit() {
     this.coffee = new Coffee();
@@ -43,11 +47,15 @@ export class CoffeeComponent implements OnInit {
   }
 
   cancel() {
-
+    this.router.navigate(['/']);
   }
 
   save() {
-
+    this.dataService.save(this.coffee, result => {
+      if (result) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
   OnDestroy() {
