@@ -1,16 +1,28 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>Mycoffeeapp</title>
+  <title>Mycoffee App</title>
   <base href="/">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- bunlar android'de çalışır -->
+  <link rel="manifest" href="manifest.json">
+ <meta name="theme-color" content="#472D21">  <!-- status bar rengi -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- IOS Metatags for PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">  <!--bunu ekleyince direk uygulama görünümüne gelebildi-->
+  <meta name="apple-mobile-web-app-title" content="MyCoffeeApp">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="favicon.ico" sizes="180x180">
+  <link rel="apple-touch-icon" href="favicon.ico" sizes="120x120">
 </head>
+
 <body>
   <app-root></app-root>
 </body>
+
 </html>
